@@ -1,4 +1,4 @@
-name: Deploy multi-agent-ui via Docker
+name: Deploy pioneer-team-frontend via Docker
 
 on:
   push:
@@ -42,7 +42,7 @@ jobs:
 
   deploy:
     needs: build-and-push
-    runs-on: [self-hosted, multi-agent-ui]
+    runs-on: [self-hosted, pioneer-team-frontend]
 
     steps:
       - name: GHCR Login
