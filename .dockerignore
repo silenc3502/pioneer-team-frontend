@@ -1,0 +1,45 @@
+# 빌드 컨텍스트 제외 — 빌드 속도 향상 + 이미지에 불필요 파일 유출 방지
+
+# 의존성/빌드 산출물
+node_modules
+.next
+.next-build
+out
+
+# Git / IDE
+.git
+.gitignore
+.github
+.vscode
+.idea
+.DS_Store
+
+# 로그 / 캐시
+*.log
+.eslintcache
+tsconfig.tsbuildinfo
+coverage
+.nyc_output
+
+# 환경 변수 (.env는 Actions가 빌드 컨텍스트에 만들어 넣음)
+.env.local
+.env.development
+.env.test
+.env.production
+
+# 도커/컨테이너 관련
+Dockerfile
+.dockerignore
+docker-compose.yml
+docker-compose.*.yml
+
+# 문서
+README.md
+*.md
+
+# 테스트 / 임시
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+.swc

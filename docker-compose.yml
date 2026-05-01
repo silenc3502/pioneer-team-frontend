@@ -1,0 +1,28 @@
+services:
+  nextjs-app:
+    image: ghcr.io/${REPO_USER}/pioneer-team-frontend:latest
+    container_name: pioneer-team-frontend
+    env_file:
+      - .env
+    expose:
+      - "3000"
+    restart: unless-stopped
+    networks:
+      - pioneer-team-net
+
+  nginx:
+    image: nginx:stable
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "37123:80"
+    volumes:
+      - ./conf:/etc/nginx/conf.d:ro
+    depends_on:
+      - nextjs-app
+    networks:
+      - pioneer-team-net
+
+networks:
+  pioneer-team-net:
+    driver: bridge
