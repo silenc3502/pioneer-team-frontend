@@ -35,7 +35,7 @@ const TRIANGLE_CLIP = "[clip-path:polygon(0_0,100%_0,50%_100%)]";
 const STAR_CLIP =
   "[clip-path:polygon(50%_0%,61%_35%,98%_35%,68%_57%,79%_91%,50%_70%,21%_91%,32%_57%,2%_35%,39%_35%)]";
 
-const HERO_IMAGE_SRC = "/images/mbti/feel_logic.png";
+const DEFAULT_HERO_IMAGE_SRC = "/images/mbti/feel_logic.png";
 const HERO_IMAGE_ALT = "심리 테스트 메인 이미지";
 
 type Props = {
@@ -170,8 +170,17 @@ export const PlayfulTestPage = ({ test }: Props) => {
           </div>
         ) : (
           <ImpressionTracker contentId={heroContentId(test.contentId)}>
-            <PlayfulHeroImage src={HERO_IMAGE_SRC} alt={HERO_IMAGE_ALT}>
-              <PlayfulStartButton onStart={handleStartClick} />
+            <PlayfulHeroImage
+              src={test.thumbnailPath ?? DEFAULT_HERO_IMAGE_SRC}
+              alt={HERO_IMAGE_ALT}
+            >
+              {test.questions.length > 0 ? (
+                <PlayfulStartButton onStart={handleStartClick} />
+              ) : (
+                <div className="rounded-full bg-white/95 px-5 py-2.5 text-xs font-bold text-zinc-700 shadow-md ring-1 ring-zinc-200">
+                  준비 중
+                </div>
+              )}
             </PlayfulHeroImage>
           </ImpressionTracker>
         )}
