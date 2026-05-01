@@ -11,7 +11,6 @@ import { useTracking } from "@/features/tracking/application/hooks/useTracking";
 import { ImpressionTracker } from "@/features/tracking/ui/components/ImpressionTracker";
 import {
   heroContentId,
-  questionContentId,
   startButtonContentId,
 } from "@/features/tracking/domain/contentId";
 import { PlayfulHeroImage } from "@/features/playful-test/ui/components/PlayfulHeroImage";
@@ -164,18 +163,10 @@ export const PlayfulTestPage = ({ test }: Props) => {
                 {currentIndex + 1} / {totalQuestionCount}
               </span>
             </div>
-            <ImpressionTracker
-              contentId={questionContentId(
-                test.contentId,
-                currentQuestion.id,
-              )}
-              className="w-full"
-            >
-              <QuestionTemplate
-                question={currentQuestion}
-                onSelect={handleSelectChoice}
-              />
-            </ImpressionTracker>
+            <QuestionTemplate
+              question={currentQuestion}
+              onSelect={handleSelectChoice}
+            />
           </div>
         ) : (
           <ImpressionTracker contentId={heroContentId(test.contentId)}>

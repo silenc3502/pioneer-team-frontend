@@ -11,7 +11,6 @@ import { useTracking } from "@/features/tracking/application/hooks/useTracking";
 import { ImpressionTracker } from "@/features/tracking/ui/components/ImpressionTracker";
 import {
   heroContentId,
-  questionContentId,
   startButtonContentId,
 } from "@/features/tracking/domain/contentId";
 import { SeriousHeroImage } from "@/features/serious-test/ui/components/SeriousHeroImage";
@@ -94,20 +93,12 @@ export const SeriousTestPage = ({ test }: Props) => {
                 {currentIndex + 1} / {totalQuestionCount}
               </span>
             </div>
-            <ImpressionTracker
-              contentId={questionContentId(
-                test.contentId,
-                currentQuestion.id,
-              )}
-              className="w-full"
-            >
-              <div className="rounded-2xl bg-white/95 p-6 shadow-2xl ring-1 ring-zinc-200 backdrop-blur-sm">
-                <QuestionTemplate
-                  question={currentQuestion}
-                  onSelect={handleSelectChoice}
-                />
-              </div>
-            </ImpressionTracker>
+            <div className="w-full rounded-2xl bg-white/95 p-6 shadow-2xl ring-1 ring-zinc-200 backdrop-blur-sm">
+              <QuestionTemplate
+                question={currentQuestion}
+                onSelect={handleSelectChoice}
+              />
+            </div>
           </div>
         ) : (
           <ImpressionTracker contentId={heroContentId(test.contentId)}>
